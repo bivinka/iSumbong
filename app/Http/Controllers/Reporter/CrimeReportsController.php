@@ -15,7 +15,7 @@ class CrimeReportsController extends Controller
     protected $crimeReports;
     protected $crimeCategories;
 
-    public function __consruct(CrimeReportsModel $crimeReports, CrimeCategoriesModel $crimeCategories)
+    public function __construct(CrimeReportsModel $crimeReports, CrimeCategoriesModel $crimeCategories)
     {
         $this->crimeReports    = $crimeReports;
         $this->crimeCategories = $crimeCategories;

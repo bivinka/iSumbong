@@ -8,16 +8,15 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
     
 use App\Models\CrimeReportsModel;
-use App\Models\CrimeCategoriesModel;
-
 
 class CrimeReportsController extends Controller
 {
-    
-    public function __consruct(CrimeReportsModel $crimeReports, CrimeCategoriesModel $crimeCategories)
+    protected $crimeReports;
+    protected $crimeCategories;
+
+    public function __construct(CrimeReportsModel $crimeReports)
     {
-        $this->crimeReports    = $crimeReports;
-        $this->crimeCategories = $crimeCategories;
+        $this->crimeReports = $crimeReports;
     }
 
     public function index()
@@ -40,4 +39,12 @@ class CrimeReportsController extends Controller
 
     public function destroy($id)
     {}
+
+    public function getCrimeReports($id)
+    {
+        $reports = $this->crimeReports->fetchCrimeReports($id);
+
+        return response()->json(['reports' => $reports]);
+
+    }
 }
