@@ -1,0 +1,20 @@
+<lx-dialog class="dialog dialog--l" id="logout" auto-close="true" onclose="closingDialog()" onscrollend="scrollEndDialog()">
+    <div class="dialog__header">
+        <div class="toolbar bgc-light-blue-500 pl++">
+            <span class="toolbar__label tc-white fs-title">
+                Logout
+            </span>
+        </div>
+    </div>
+
+    <div class="dialog__content">
+        <div class="pl++ pt++">
+            <span class="fs-title display-block">Do you want to continue to log out?</span>
+        </div>
+    </div>
+
+    <div class="dialog__actions">
+        <button class="btn btn--m btn--blue btn--raised" lx-ripple lx-dialog-close>Cancel</button>
+        <button class="btn btn--m btn--black btn--flat" lx-ripple ng-click="logout()">Yes</button>
+    </div>
+</lx-dialog>

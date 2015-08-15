@@ -1,0 +1,27 @@
+
+html {
+	overflow-y: scroll;
+}
+
+.pt1-5 {
+	margin-top: 12px;
+	float: right;
+}
+
+.data-table-header {
+	border-bottom: none !important;
+}
+
+/* PAGINATION */
+
+ul.pagination {
+	
+}
+
+.data-table__selectable-row th:first-child:before, .data-table__selectable-row td:first-child:before {
+  content: none !important;
+}
+
+.data-table__selectable-row:hover {
+	cursor: pointer !important;
+}
