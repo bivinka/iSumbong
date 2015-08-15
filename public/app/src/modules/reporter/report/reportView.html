@@ -1,9 +1,26 @@
 <ng-include src="'src/modules/common/views/header.html'"></ng-include>
 <div class="main">
     <!-- <ng-include src="'src/modules/common/views/sidebars/reporter-sidebar.html'"></ng-include> -->
-
-<div class="main-section">
-    <h3 class="main-section__title">Report New Case</h3>
-</div>
+    <div class="main-section" flex-container="row">
+        <div id="interface" class="mt++ tc-white-1 bgc-grey-800" flex-item="8" flex-container="column" flex-align="space-around center">
+            <div id="report_header" class="mb++ bgc-blue-500">
+                <span class="fs-display-1 display-block">Report Crime</span>
+            </div>
+            <div>
+                <button class="mb++ btn btn--l btn--red" ngf-select 
+                    ng-model="vm.file" 
+                    class="btn btn--xl btn--blue btn--icon"
+                    accept="image/*;capture=camera"
+                    lx-tooltip="Upload image" tooltip-position="bottom" accept="image/*;capture=camera">
+                    <i class="icon icon--xl icon--red icon--circled mdi mdi-upload"></i>
+                </button>
+            </div>
+            <div>
+                <button ng-click="vm.sendReport()" class="mb++ btn btn--xl btn--blue btn--raised" lx-ripple>
+                    Send Report
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 

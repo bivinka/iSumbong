@@ -7,6 +7,18 @@
  */
 Route::group(['prefix' => 'reporter'], function()
 {
-    Route::resource('crime', 'Reporter\CrimeController');
-    Route::resource('stations', 'StationsController');
+    // Route::resource('crime', 'Reporter\CrimeController');
+    Route::resource('stations', 'Reporter\StationsController');
+    Route::resource('report', 'Reporter\CrimeReportsController');
 });
+
+
+Route::group(['prefix' => 'admin'], function()
+{
+    // Route::resource('crime', 'Reporter\CrimeController');
+    // Route::resource('stations', 'Reporter\StationsController');
+    // Route::resource('report', 'Reporter\CrimeReportsController');
+    Route::get('reports/{id}', 'Admin\CrimeReportsController@getCrimeReports');
+});
+
+Route::get('categories', 'Reporter\CrimeReportsController@getCategories');
