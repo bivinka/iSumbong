@@ -3,7 +3,7 @@
     'use strict';   
 
     angular
-        .module('application', ['ngRoute', 'ngResource', 'lumx', 'satellizer', 'module.common', 'module.reporter'])
+        .module('application', ['ngRoute', 'ngResource', 'lumx', 'satellizer', 'module.common', 'module.reporter', 'module.admin'])
         .controller('ApplicationController', ['$rootScope', '$location', '$window', ApplicationController])
         .run(['$rootScope', '$window', '$route', '$location', run]);
 
