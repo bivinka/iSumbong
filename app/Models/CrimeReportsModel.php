@@ -8,7 +8,7 @@ use DB;
 class CrimeReportsModel extends Model
 {
     protected $table = 'crime_reports';
-    protected $fillable = ['crime_id','reporter_id','longitude','latitude','image', 'status', 'delete_flag'];
+    protected $fillable = ['crime_id','reporter_id','longitude','latitude','image', 'status', 'delete_flag', 'station_id'];
 
     public function getReport($id)
     {

@@ -4,6 +4,7 @@
 
     angular
         .module('application', ['ngRoute', 'ngResource', 'lumx', 'satellizer', 
+                'ngFileUpload',
             'module.common', 
             'module.reporter', 
             'module.admin',

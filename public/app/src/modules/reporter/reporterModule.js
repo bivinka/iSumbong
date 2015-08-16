@@ -22,7 +22,12 @@
                 .when('/reporter/report', {
                     templateUrl     : 'src/modules/reporter/report/reportView.html',
                     controller      : 'ReportController',
-                    controllerAs    : 'vm'
+                    controllerAs    : 'vm',
+                    resolve         : {
+                        getTypes : function(ReportService) {
+                            return ReportService.getTypes();
+                        }
+                    }
                 });
 
         }

@@ -30,13 +30,18 @@
             Socket
         ) {
 
+
             var vm = this;
-            
+                
+
+
+            vm.types = ReportService.categories;
             vm.Sidebar = Sidebar;
 
             vm.stations = [];
             var latitude = null;
             var longitude = null;
+            var isUpload = false;
 
             getLocation();
 
@@ -53,7 +58,11 @@
 
             function getLocation() {
                 if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(uploadFile);
+                    
+                    if (isUpload) {
+                        navigator.geolocation.getCurrentPosition(uploadFile);
+                    }
+
                     navigator.geolocation.getCurrentPosition(init);
                 } else {
                     return "Geolocation is not supported by this browser.";
@@ -61,28 +70,21 @@
             }
 
             vm.sendReport = function () {
-                // console.log(getLocation());
+                isUpload = true;
                 getLocation();
-
-                if (latitude !== null && longitude !== null) {
-                    uploadFile();
-                } else {
-                    uploadFile();
-                }
-
             }
 
             function uploadFile (position) {
 
                 Upload.upload({
-                    url     : $rootScope.config.application_server +  'api/resume/upload',
+                    url     : $rootScope.config.server_url +  'reporter/report',
                     fields  : 
                     {
                         latitude: position.coords.latitude,
                         longitude: position.coords.longitude,
-                        // user_id should be changed
                         user_id: 1,
                         station_id: 1,
+                        crime_id : vm.selected_type.id,
                         description: vm.description
                     },
                     file    : vm.file

@@ -11,11 +11,12 @@
                 <lx-tab heading="Open Report">
                     <br/>
                     <div flex-container="row" flex-gutter="24">
-                        <div flex-item>
+                        <div flex-item ng-repeat="report in vm.reports">
                             <div class="card">
                                 <div flex-container="row">
                                     <div class="card__img card__img--left" style="height: 160px">
-                                        <img src="../../../assets/img/1/hk.jpg">
+                                        <img ng-src="http://core.isumbong.com/public/reports/images/{{report.image}}" alt="test"/>
+                                        <!-- <img ng-src="http://core.isumbong.com/public/reports/images/20150816051300.jpeg" alt="test"/> -->
                                     </div>
 
                                     <div flex-item flex-container="column">
@@ -25,34 +26,6 @@
                                                 <span class="fs-subhead tc-black-2 display-block">
                                                     <p>
                                                         Eight Hong Kong people died after dismissed policeman ... hostage drama soured relations between the Philippines and Hong Kong.
-                                                    </p>
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        <div class="card__actions">
-                                            <button class="btn btn--m btn--black btn--flat" lx-ripple>Respond</button>
-                                            <button class="btn btn--m btn--orange btn--flat" lx-ripple>View Report</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div flex-item>
-                            <div class="card">
-                                <div flex-container="row">
-                                    <div class="card__img card__img--left" style="height: 160px">
-                                        <img src="../../../assets/img/6/maguindanaomassacre_1012.jpg">
-                                    </div>
-
-                                    <div flex-item flex-container="column">
-                                        <div flex-item>
-                                            <div class="p+">
-                                                <strong class="fs-headline display-block">Murder</strong>
-                                                <span class="fs-subhead tc-black-2 display-block">
-                                                    <p>
-                                                        Ampatuan people were murdered brutally.
                                                     </p>
                                                 </span>
                                             </div>

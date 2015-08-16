@@ -16,6 +16,9 @@ use App\Models\AuditTrailModel as Audit;
 use GuzzleHttp;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
 
+use JWT;
+use Validator;
+
 class AuthenticateController extends Controller
 {
     public function __construct()
@@ -82,87 +85,54 @@ class AuthenticateController extends Controller
 
     public function google(Request $request)
     {
-
-        $code = $request->get('code');
-        $googleService = \OAuth::consumer('Google');
-
-    if ( ! is_null($code))  
-    {
-        // This was a callback request from google, get the token
-        $token = $googleService->requestAccessToken($code);
-
-        // Send a request with it
-        $result = json_decode($googleService->request('https://www.googleapis.com/oauth2/v1/userinfo'), true);
-
-        $message = 'Your unique Google user id is: ' . $result['id'] . ' and your name is ' . $result['name'];
-        echo $message. "<br/>";
-
-        //Var_dump
-        //display whole array.
-        dd($result);
-    }
-    // if not ask for permission first
-    else
-    {
-        // get googleService authorization
-        $url = $googleService->getAuthorizationUri();
-
-        // return to google login url
-        return redirect((string)$url);
-    }
-
-
-
-        // $accessTokenUrl = 'https://accounts.google.com/o/oauth2/token';
-        // $peopleApiUrl = 'https://www.googleapis.com/plus/v1/people/me/openIdConnect';
-        // $params = [
-        //     'code' => $request->input('code'),
-        //     'client_id' => $request->input('clientId'),
-        //     'client_secret' => Config::get('app.google_secret'),
-        //     'redirect_uri' => $request->input('redirectUri'),
-        //     'grant_type' => 'authorization_code',
-        // ];
-        // $client = new GuzzleHttp\Client();
-        // // Step 1. Exchange authorization code for access token.
-        // $accessTokenResponse = $client->post($accessTokenUrl, ['body' => $params]);
-        // $accessToken = $accessTokenResponse->json()['access_token'];
-        // $headers = array('Authorization' => 'Bearer ' . $accessToken);
-        // // Step 2. Retrieve profile information about the current user.
-        // $profileResponse = $client->get($peopleApiUrl, ['headers' => $headers]);
-        // $profile = $profileResponse->json();
-
-        // var_dump($profile);
+        $accessTokenUrl = 'https://accounts.google.com/o/oauth2/token';
+        $peopleApiUrl = 'https://www.googleapis.com/plus/v1/people/me/openIdConnect';
+        $params = [
+            'code' => $request->input('code'),
+            'client_id' => $request->input('clientId'),
+            'client_secret' => Config::get('app.google_secret'),
+            'redirect_uri' => $request->input('redirectUri'),
+            'grant_type' => 'authorization_code',
+        ];
+        $client = new GuzzleHttp\Client();
+        // Step 1. Exchange authorization code for access token.
+        $accessTokenResponse = $client->post($accessTokenUrl, ['body' => $params]);
+        $accessToken = $accessTokenResponse->json()['access_token'];
+        $headers = array('Authorization' => 'Bearer ' . $accessToken);
+        // Step 2. Retrieve profile information about the current user.
+        $profileResponse = $client->get($peopleApiUrl, ['headers' => $headers]);
+        $profile = $profileResponse->json();
 
         // Step 3a. If user is already signed in then link accounts.
-        // if ($request->header('Authorization'))
-        // {
-        //     // $user = User::where('google', '=', $profile['sub']);
-        //     // if ($user->first())
-        //     // {
-        //     //     return response()->json(['message' => 'There is already a Google account that belongs to you'], 409);
-        //     // }
-        //     // $token = explode(' ', $request->header('Authorization'))[1];
-        //     // $payload = (array) JWT::decode($token, Config::get('app.token_secret'), array('HS256'));
-        //     // $user = User::find($payload['sub']);
-        //     // $user->google = $profile['sub'];
-        //     // $user->displayName = $user->displayName || $profile['name'];
-        //     // $user->save();
-        //     return response()->json(['token' => $this->createToken($user)]);
-        // }
-        // // Step 3b. Create a new user account or return an existing one.
-        // else
-        // {
-        //     // $user = User::where('google', '=', $profile['sub']);
-        //     // if ($user->first())
-        //     // {
-        //     //     return response()->json(['token' => $this->createToken($user->first())]);
-        //     // }
-        //     // $user = new User;
-        //     // $user->google = $profile['sub'];
-        //     // $user->displayName = $profile['name'];
-        //     // $user->save();
-        //     return response()->json(['token' => $this->createToken($user)]);
-        // }
+        if ($request->header('Authorization'))
+        {
+            $user = User::where('google', '=', $profile['sub']);
+            if ($user->first())
+            {
+                return response()->json(['message' => 'There is already a Google account that belongs to you'], 409);
+            }
+            $token = explode(' ', $request->header('Authorization'))[1];
+            $payload = (array) JWT::decode($token, Config::get('app.token_secret'), array('HS256'));
+            $user = User::find($payload['sub']);
+            $user->google = $profile['sub'];
+            $user->displayName = $user->displayName || $profile['name'];
+            $user->save();
+            return response()->json(['token' => $this->createToken($user)]);
+        }
+        // Step 3b. Create a new user account or return an existing one.
+        else
+        {
+            $user = User::where('google', '=', $profile['sub']);
+            if ($user->first())
+            {
+                return response()->json(['token' => $this->createToken($user->first())]);
+            }
+            $user = new User;
+            $user->google = $profile['sub'];
+            $user->displayName = $profile['name'];
+            $user->save();
+            return response()->json(['token' => $this->createToken($user)]);
+        }
     }
 
 }

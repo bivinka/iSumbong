@@ -30,3 +30,4 @@ Route::group(['prefix' => 'api'], function()
 });
 
 Route::post('auth/google', 'AuthenticateController@google');
+Route::post('stations', 'Reporter\StationsController@getNearestStations');

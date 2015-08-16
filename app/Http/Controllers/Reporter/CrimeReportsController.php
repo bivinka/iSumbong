@@ -29,7 +29,7 @@ class CrimeReportsController extends Controller
     public function store(Request $request)
     {
         $params = $request->all();
-        $file   = $request->file('image');
+        $file   = $request->file('file');
 
         if (in_array($file->getMimeType(), ['image/jpeg', 'image/png', 'image/jpg'])) {
 
@@ -45,19 +45,21 @@ class CrimeReportsController extends Controller
                 'longitude'   => $longitude,
                 'latitude'    => $latitude,
                 'image'       => date('Ymdhis') . '.jpeg',
+                'status'      => 'o',
+                'station_id'  => 1
             );
 
             $this->crimeReports->fill($reportData);
             $this->crimeReports->save();
 
-            $request->file('image')->move('public/reports/images/', $reportData['image']);
+            $request->file('file')->move('public/reports/images/', $reportData['image']);
 
             $stationId = 1;
 
             event(new \App\Events\CreateCrimeReportEvent($stationId));
 
             return response()->json([
-                'success' => 'Add resume success',
+                'success' => 'Ang iyong sumbong ay naipada na.',
                 "image"   => 'public/reports/images/' . $reportData['image']
             ], 200);
 

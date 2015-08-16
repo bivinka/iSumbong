@@ -15,6 +15,12 @@
                         getStations : {
                             url : $rootScope.config.server_url + 'admin/stations',
                             method : 'GET'
+                        },
+
+                        getReports : {
+                            url : $rootScope.config.server_url + 'admin/reports/:id',
+                            method : 'GET',
+                            params : {id : '@id'}
                         }
                     }
                 );
@@ -23,6 +29,7 @@
                 var AdminDashboardService = {
 
                     stations : null,
+                    reports : null,
 
                     getStations : function getStations() {
                         
@@ -30,6 +37,14 @@
 
                         return api.getStations().$promise.then(function(response) {
                             self.stations = response.stations;
+                        });
+                    },
+
+                    getReports : function getReports(id) {
+                        var self = this;    
+
+                        return api.getReports({id : id}).$promise.then(function(response) {
+                            self.reports = response.reports;
                         });
                     }
                 };

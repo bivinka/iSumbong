@@ -31,9 +31,18 @@
             vm.Sidebar = Sidebar;
 
             vm.stations = [];
+            vm.reports = null;
+
+            AdminDashboardService.getReports(1).then(function(response) {
+                vm.reports = AdminDashboardService.reports;
+            });
 
             Socket.on('create-report-channel:App\\Events\\CreateCrimeReportEvent', function(data) {
-                console.log(data);
+                    
+                AdminDashboardService.getReports(data.data).then(function(response) {
+                    vm.reports = AdminDashboardService.reports;
+                });
+
             });
 
         }

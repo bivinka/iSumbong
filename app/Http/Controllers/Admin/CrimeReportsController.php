@@ -33,7 +33,7 @@ class CrimeReportsController extends Controller
     public function show($id)
     {
         $reports = $this->crimeReports->getReport($id);
-        return response()->json(['report' => $report]);
+        return response()->json(['reports' => $reports]);
     }
 
     public function edit($id)
