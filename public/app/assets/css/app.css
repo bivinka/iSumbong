@@ -1,1 +1,1 @@
-#header{height:70px;padding-top:18px}#interface{margin:0 auto;padding-bottom:15px}#interface #report_header{width:100%;text-align:center;padding:5px}#interface button{margin:0 auto;display:block}
+#dashboard>span{margin-top:25px;margin-left:20px}#dashboard #map_render{width:80%;margin:0 auto}#dashboard button{margin:0 auto;display:block;margin-bottom:30px}#header{height:70px;padding-top:18px}#report_interface span{margin-top:20px}#report_interface button{margin:0 auto;display:block;margin-top:40px}#report_interface #crime_type{width:80%;margin:0 auto}
