@@ -2,20 +2,16 @@
 <div class="main">
     <!-- <ng-include src="'src/modules/common/views/sidebars/reporter-sidebar.html'"></ng-include> -->
 
-<div class="main-section">
-    <h3 class="main-section__title">iSumbong mo</h3>
+<div id="dashboard" class="main-section">
+    <span class="fs-display-1 display-block">Welcome to iSumbong</span>
     <div id="interface" flex-container="column" flex-align="space-between center">
-        <div flex-item="5">
-            <button class="btn btn--l btn--red btn--icon" ngf-select 
-                ng-model="vm.file" 
-                class="btn btn--m btn--blue btn--icon" 
-                accept="image/*;capture=camera"
-                lx-tooltip="Upload resume" tooltip-position="bottom" accept="image/*;capture=camera">
-                <i class="mdi mdi-upload"></i>
-            </button>
+        <div id="map_render" >
+            <iframe src="src/modules/reporter/dashboard/mapView.html" style="margin:0; padding:0; width:100%; height: 425px;"></iframe>
         </div>
-        <div flex-item="5">
-            <button class="btn btn--xl btn--blue btn--raised" lx-ripple>Button</button>
+        <div>
+            <a href="http://client.isumbong.com/#/reporter/report">
+                <button class="btn btn--xl btn--blue btn--raised" lx-ripple>Report an Incident</button>
+            </a>
         </div>
     </div>
 </div>
