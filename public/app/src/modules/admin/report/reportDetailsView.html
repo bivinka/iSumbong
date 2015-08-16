@@ -1,37 +1,40 @@
 <ng-include src="'src/modules/common/views/header.html'"></ng-include>
 <div class="main">
     <!-- <ng-include src="'src/modules/common/views/sidebars/admin-sidebar.html'"></ng-include> -->
-
+    
     <div class="main-section">
-        <h3 class="main-section__title">Report View # 123</h3>
+        <h3 class="main-section__title">Report View # 123
+            <button class="btn btn--m btn--blue btn--raised m+" lx-ripple>In Progress</button>
+            <button class="btn btn--m btn--blue btn--raised m+" lx-ripple>Resolved</button>
+            <button class="btn btn--m btn--blue btn--raised m+" lx-ripple>Closed</button>
+            <button class="btn btn--m btn--blue btn--raised m+" lx-ripple>Declined</button>
+        </h3>
+            <iframe src="src/modules/admin/dashboard/mapView.html" style="margin:0; padding:0; width:100%; height: 690px;"></iframe>
 
             <div flex-container="row" flex-gutter="24">
                 <div flex-item>
-                    <div class="card">
+                    <div class="card p++">
+                        <div flex-container="row">
 
-                        <div class="card__actions">
-                            <button class="btn btn--m btn--black btn--flat" lx-ripple>Share</button>
-                            <button class="btn btn--m btn--orange btn--flat" lx-ripple>Learn more</button>
-                        </div>
-
-                        <div class="card__img card__img--top">
-                            <img src="../../../assets/img/1/hk.jpg">
-                            <span class="fs-headline tc-white-1 display-block">Hostage Hong Kong</span>
-                        </div>
-
-                        <div class="p+">
-                            <span class="fs-subhead tc-black-2 display-block">Lorem Ipsum</span>
-
-                            <div class="paragraph fs-body-1">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tristique orci a lacinia malesuada.
-                                </p>
+                            <div flex-item flex-container="column">
+                                <div flex-item>
+                                    <div class="ml+">
+                                        <strong class="fs-headline display-block">Hong Kong</strong>
+                                        <span class="fs-subhead tc-black-2 display-block">
+                                           <p>
+                                                Eight Hong Kong people died after dismissed policeman ... hostage drama soured relations between the Philippines and Hong Kong.
+                                            </p>
+                                        </span>
+                                    </div>
+                                    <div class="card__img card__img--top ml+++">
+                                        <img src="../../../assets/img/1/hk.jpg">
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
-                
             </div>
     </div>
 </div>

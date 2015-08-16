@@ -12,17 +12,6 @@
             
             vm.Sidebar = Sidebar;
 
-            vm.stations = [];
-
-            DashboardService.getStations().then(function() {
-                vm.stations = DashboardService.stations;
-            });
-
-
-            console.log(vm.stations);
-
-
-
         }
 
 })();

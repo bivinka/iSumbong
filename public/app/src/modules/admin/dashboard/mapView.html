@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>Google Maps</title>
+        
+        <!-- maps -->
+        <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&libraries=places&callback=initMap&key=AIzaSyCIqxYnvkq6_tC_9p96NyJPWr02XL2aCdU&sensor=false" async defer></script>
+
+        <script>
+            var map;
+            var infowindow;
+
+            function initMap() {
+                var pyrmont = {lat: 14.5876187, lng: 121.0675801};
+
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: pyrmont,
+                    streetViewControl: true,
+                    scrollwheel: true,
+                    zoom: 18
+                });
+
+            infowindow = new google.maps.InfoWindow();
+
+            var service = new google.maps.places.PlacesService(map);
+                service.nearbySearch({
+                location: pyrmont,
+                radius: 800,
+                types: ['store', 'restaurants', 'police']
+                }, callback);
+            }
+
+            function callback(results, status) {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    for (var i = 0; i < results.length; i++) {
+                        createMarker(results[i]);
+                    }
+                }
+            }
+
+            function createMarker(place) {
+                var placeLoc = place.geometry.location;
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: place.geometry.location
+                });
+
+                google.maps.event.addListener(marker, 'click', function() {
+                    infowindow.setContent(place.name);
+                    infowindow.open(map, this);
+                });
+            }   
+
+        </script>
+
+    </head>
+    <body>
+        <span> 
+            <strong> Date and Time Reported : </strong> August 15, 2015 3:30PM 
+        </span>
+         <br/>
+        <span>
+            <strong> Origin Address of Report </strong>: Meralco Gym
+            Ortigas Avenue, Metro Manila, Pasig
+            1605, Philippines
+        </span> 
+        <p>
+            <script src="https://maps.googleapis.com/maps/api/geocode/json?latlng=14.5876187,121.0675801&key=AIzaSyCIqxYnvkq6_tC_9p96NyJPWr02XL2aCdU" async defer></script>
+
+        </p>
+
+        <span> Nearby establishments with CCTV camera. (Request the footage for the time reported) </span> 
+        <div id="map" style="width:100%; height: 600px;"></div>
+    </body>
+</html>
