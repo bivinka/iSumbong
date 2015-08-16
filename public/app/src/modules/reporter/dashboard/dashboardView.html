@@ -3,7 +3,21 @@
     <!-- <ng-include src="'src/modules/common/views/sidebars/reporter-sidebar.html'"></ng-include> -->
 
 <div class="main-section">
-    <h3 class="main-section__title">Dashboard</h3>
+    <h3 class="main-section__title">iSumbong mo</h3>
+    <div id="interface" flex-container="column" flex-align="space-between center">
+        <div flex-item="5">
+            <button class="btn btn--l btn--red btn--icon" ngf-select 
+                ng-model="vm.file" 
+                class="btn btn--m btn--blue btn--icon" 
+                accept="image/*;capture=camera"
+                lx-tooltip="Upload resume" tooltip-position="bottom" accept="image/*;capture=camera">
+                <i class="mdi mdi-upload"></i>
+            </button>
+        </div>
+        <div flex-item="5">
+            <button class="btn btn--xl btn--blue btn--raised" lx-ripple>Button</button>
+        </div>
+    </div>
 </div>
 </div>
 
