@@ -4,9 +4,27 @@
 
     angular
         .module('module.admin')
-        .controller('DashboardController', ['$auth', '$http', '$location', '$window', '$rootScope', 'Sidebar', 'DashboardService', DashboardController]);
+        .controller('DashboardController', [
+            '$auth', 
+            '$http', 
+            '$location', 
+            '$window', 
+            '$rootScope', 
+            'Sidebar', 
+            'AdminDashboardService', 
+            'Socket', 
+            DashboardController]);
 
-        function DashboardController($auth, $http, $location, $window, $rootScope, Sidebar, DashboardService) {
+        function DashboardController(
+            $auth, 
+            $http, 
+            $location, 
+            $window, 
+            $rootScope, 
+            Sidebar, 
+            AdminDashboardService,
+            Socket
+        ) {
 
             var vm = this;
             
@@ -14,14 +32,9 @@
 
             vm.stations = [];
 
-            DashboardService.getStations().then(function() {
-                vm.stations = DashboardService.stations;
+            Socket.on('create-report-channel:App\\Events\\CreateCrimeReportEvent', function(data) {
+                console.log(data);
             });
-
-
-            console.log(vm.stations);
-
-
 
         }
 

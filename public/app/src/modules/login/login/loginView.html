@@ -1,0 +1,52 @@
+<div class="banner" style="padding: 150px">
+    
+</div>
+
+<div class="github-activity">
+    <div class="wrapper">
+    </div>
+</div>
+
+<div class="bgc-white-1 mt++" flex-container="row" flex-align="center" flex-align-items='center' style="height: 200px">
+    <div flex-item="5" class="p+">
+        <div class="p++" style="margin-top: -350px">
+            <div flex-item="5" class="tc-white">
+                <span class="fs-display-1 display-block">iSumbong
+                    <p><small class="tc-white">Your online sumbungan.</small></p>
+                </span>
+            </div>
+        </div>
+    <div class="card">
+        <form ng-submit="vm.login()">
+            <div class="p++">
+                <div flex-item="5">
+                    <span class="fs-headline display-block" style="font-weight: 300">User Login</span>
+                </div>
+                <div flex-container="column">
+                    <div flex-item>
+                        <lx-text-field label="Username / Email">
+                            <input type="text" ng-model="vm.username">
+                        </lx-text-field>
+                    </div>
+                </div>
+                <div flex-container="column">
+                    <div flex-item>
+                        <lx-text-field label="Password">
+                            <input type="password" ng-model="vm.password">
+                        </lx-text-field>
+                    </div>
+                </div>
+            </div>
+            <div class="card__actions p+ content_right">
+                <button type="submit" class="btn btn--l btn--blue btn--raised" lx-ripple>Sign in</button>
+                <button class="btn btn--l btn--blue btn--flat" lx-ripple>Sign up</button>
+            </div>
+        </form>
+    </div>
+    <div class="p++">
+        <div flex-item="5" class="content_center">
+                <button ng-click="vm.authenticate('facebook')" class="btn btn--l btn--blue btn--raised" lx-ripple>Sign in With Facebook</button>
+                <button ng-click="vm.authenticate('google')" class="btn btn--l btn--red btn--raised" lx-ripple>Sign in with Google</button>
+        </div>
+    </div>
+</div>

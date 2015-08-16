@@ -4,9 +4,9 @@
 
     angular
         .module('module.admin')
-        .service('DashboardService', ['$resource', '$rootScope', '$window', DashboardService]);
+        .service('AdminDashboardService', ['$resource', '$rootScope', '$window', AdminDashboardService]);
 
-        function DashboardService ($resource, $rootScope, $window) {
+        function AdminDashboardService ($resource, $rootScope, $window) {
 
                 var api = $resource (
                     '',
@@ -20,7 +20,7 @@
                 );
 
 
-                var DashboardService = {
+                var AdminDashboardService = {
 
                     stations : null,
 
@@ -34,7 +34,7 @@
                     }
                 };
 
-                return DashboardService;
+                return AdminDashboardService;
         }
 
 })();

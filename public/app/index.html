@@ -19,6 +19,8 @@
         <div ng-view></div> 
             
         <script src="bower_components/jquery/dist/jquery.js"></script>
+        
+        <script src="assets/libs/socket.io.js"></script>
     
         <!-- build:js bower_components/angular.min.js -->
         <script src="bower_components/angular/angular.min.js"></script>
@@ -26,7 +28,7 @@
         <script src="bower_components/angular-resource/angular-resource.min.js"></script>
         <script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
         <!-- endbuild -->
-
+            
         <script src="bower_components/satellizer/satellizer.min.js"></script>
         <script src="bower_components/angular-smart-table/dist/smart-table.min.js"></script>
         <script src="bower_components/velocity/velocity.min.js"></script>
@@ -34,7 +36,11 @@
         <script src="bower_components/lumx/dist/lumx.min.js"></script>
         
         <script src="src/app.js"></script>
-            
+        
+        <script src="src/modules/login/loginModule.js"></script>
+        <script src="src/modules/login/login/loginController.js"></script>
+        <script src="src/modules/login/login/loginService.js"></script>
+        
         <script src="src/modules/reporter/reporterModule.js"></script>
         <script src="src/modules/reporter/dashboard/dashboardController.js"></script>
         <script src="src/modules/reporter/dashboard/dashboardService.js"></script>
@@ -49,8 +55,7 @@
         <script src="src/modules/common/commonDirectives.js"></script>
         <script src="src/modules/common/commonFilters.js"></script>
         <script src="src/modules/common/commonServices.js"></script>
-
-
+        <script src="src/modules/common/socketService.js"></script>
     </body>
 
 </html>

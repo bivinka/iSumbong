@@ -3,7 +3,12 @@
     'use strict';   
 
     angular
-        .module('application', ['ngRoute', 'ngResource', 'lumx', 'satellizer', 'module.common', 'module.reporter', 'module.admin'])
+        .module('application', ['ngRoute', 'ngResource', 'lumx', 'satellizer', 
+            'module.common', 
+            'module.reporter', 
+            'module.admin',
+            'module.login'
+        ])
         .controller('ApplicationController', ['$rootScope', '$location', '$window', ApplicationController])
         .run(['$rootScope', '$window', '$route', '$location', run]);
 
@@ -19,7 +24,6 @@
 
         $window.localStorage.removeItem('ngConf');
     };
-
 
     angular.element(document).ready(function () {
         $.getJSON('/config/config.json',
