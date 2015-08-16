@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html lang="en-us">
-    <head>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <title>Google Maps</title>
         
         <!-- maps -->
         <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&libraries=places&callback=getLocation&key=AIzaSyCIqxYnvkq6_tC_9p96NyJPWr02XL2aCdU&sensor=false" async defer></script>
@@ -31,7 +25,7 @@
                     center: pyrmont,
                     streetViewControl: true,
                     scrollwheel: true,
-                    zoom: 18
+                    zoom: 16
                 });
 
             infowindow = new google.maps.InfoWindow();
@@ -66,10 +60,5 @@
             }   
 
         </script>
-
-    </head>
-    <body>
-        <span> Nearby establishments with CCTV camera.</span> 
+        <div style="text-align: center">Establishments within the incident</div>
         <div id="map" style="width:100%; height: 400px;"></div>
-    </body>
-</html>

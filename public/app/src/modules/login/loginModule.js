@@ -17,7 +17,7 @@
                 // authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
               clientId: '1081017298761-8aur8iq1famfv78a7fe7lebv0hj7f8ca.apps.googleusercontent.com', 
               // scope: 'email',s
-              // redirectUri : 'http://client.isumbong.com/#/reporter/dashboard',
+              redirectUri : 'http://client.isumbong.com/#/login',
             });
 
             var authenticate = ['AuthenticationService', function(AuthenticationService) {

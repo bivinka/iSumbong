@@ -6,7 +6,8 @@
     <span class="fs-display-1 display-block">Welcome to iSumbong</span>
     <div id="interface" flex-container="column" flex-align="space-between center">
         <div id="map_render" >
-            <iframe src="src/modules/reporter/dashboard/mapView.html" style="margin:0; padding:0; width:100%; height: 425px;"></iframe>
+            <ng-include src="'src/modules/reporter/dashboard/mapView.html'">
+            <!-- <iframe src="" style="margin:0; padding:0; width:100%; height: 425px;"></iframe> -->
         </div>
         <div>
             <a href="http://client.isumbong.com/#/reporter/report">

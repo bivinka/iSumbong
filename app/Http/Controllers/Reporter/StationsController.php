@@ -33,7 +33,7 @@ class StationsController extends Controller
 
     public function index()
     {
-        
+        echo 1;
     }
 
     public function store(Request $request)
