@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Reporter;
 
 use Illuminate\Http\Request;
-
+use Event;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -52,6 +52,10 @@ class CrimeReportsController extends Controller
 
             $request->file('image')->move('public/reports/images/', $reportData['image']);
 
+            $stationId = 1;
+
+            event(new \App\Events\CreateCrimeReportEvent($stationId));
+
             return response()->json([
                 'success' => 'Add resume success',
                 "image"   => 'public/reports/images/' . $reportData['image']
@@ -63,7 +67,9 @@ class CrimeReportsController extends Controller
     }
 
     public function show($id)
-    {}
+    {
+        
+    }
 
     public function edit($id)
     {}

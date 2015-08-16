@@ -1,6 +1,8 @@
 <?php
 
 return [
+    
+    'google_secret' => 'vk4vfNcKuCik0X_KzspasA30',
 
     /*
     |--------------------------------------------------------------------------
@@ -143,6 +145,8 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        'Artdarek\OAuth\OAuthServiceProvider'
 
     ],
 
@@ -191,6 +195,8 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+        'JWTAuth'   => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'OAuth'     => 'Artdarek\OAuth\Facade\OAuth',
 
     ],
 

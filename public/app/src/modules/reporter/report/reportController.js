@@ -4,9 +4,31 @@
 
     angular
         .module('module.reporter')
-        .controller('ReportController', ['$auth', '$http', '$location', '$window', '$rootScope', 'Sidebar', 'ReportService', 'LxNotificationService', 'Upload', ReportController]);
+        .controller('ReportController', [
+            '$auth', 
+            '$http', 
+            '$location', 
+            '$window', 
+            '$rootScope', 
+            'Sidebar', 
+            'ReportService', 
+            'LxNotificationService', 
+            'Upload', 
+            'Socket',
+            ReportController]);
 
-        function ReportController($auth, $http, $location, $window, $rootScope, Sidebar, ReportService, LxNotificationService, Upload) {
+        function ReportController(
+            $auth, 
+            $http, 
+            $location, 
+            $window, 
+            $rootScope, 
+            Sidebar, 
+            ReportService, 
+            LxNotificationService, 
+            Upload,
+            Socket
+        ) {
 
             var vm = this;
             

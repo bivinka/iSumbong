@@ -31,7 +31,7 @@
             {},
             {
                 isLoggedIn : {
-                    url     : $rootScope.config.application_server + 'api/authenticate/user',
+                    url     : $rootScope.config.server_url + 'api/authenticate/user',
                     method  : 'GET'
                 }
             }
